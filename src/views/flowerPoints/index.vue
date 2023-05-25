@@ -1,5 +1,5 @@
 <template>
-  <div>花积分</div>
+  <div class="hass">花积分</div>
   <el-button type="primary" @click="drawer = true">点击出现左抽屉框</el-button>
   <el-button type="primary" @click="drawer1 = true">点击出现右抽屉框</el-button>
   <el-drawer direction="ltr" v-model="drawer" :with-header="false">
