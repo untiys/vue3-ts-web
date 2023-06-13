@@ -13,8 +13,8 @@ const pinia = createPinia()
 pinia.use(persistedstate)
 
 const app = createApp(App)
+app.use(pinia)
 
 app.use(router)
-app.use(pinia)
 
 app.mount("#app")

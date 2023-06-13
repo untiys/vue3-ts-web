@@ -1,4 +1,7 @@
-import { createWebHashHistory, createRouter, RouteRecordRaw } from "vue-router"
+import { createWebHashHistory, createRouter } from "vue-router"
+import type { RouteRecordRaw } from "vue-router"
+
+import { useCounterStore } from "../pinia/index"
 
 export const childrenList: RouteRecordRaw[] = [
   {
@@ -37,6 +40,10 @@ const routes: RouteRecordRaw[] = [
     component: () => import("@/layout/index.vue"),
     children: childrenList,
   },
+  {
+    path: "/dataScreen",
+    component: () => import("@/views/dataScreen/index.vue"),
+  },
 ]
 
 const router = createRouter({
@@ -46,6 +53,7 @@ const router = createRouter({
 
 // 路由守卫
 router.beforeEach((to, from, next) => {
+  const store = useCounterStore()
   window?.axiosPromiseArr?.forEach((ele: any, index: number) => {
     ele.cancel() // 路由跳转之前，终止上一个页面正在请求的内容
     // 清空请求的参数
