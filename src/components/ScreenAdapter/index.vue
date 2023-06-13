@@ -36,7 +36,7 @@ export default defineComponent({
     })
     const Debounce = (fn: Function, delay?: number) => {
       delay = delay || 200
-      let timer: any
+      let timer: NodeJS.Timeout | null
       return (...rest: any) => {
         if (timer) {
           clearTimeout(timer)
